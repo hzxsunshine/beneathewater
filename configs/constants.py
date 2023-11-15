@@ -1,4 +1,6 @@
-contrastive_pairs = [
+from typing import List, Final
+
+contrastive_pairs: Final[List[List[str]]] = [
     ["Accurate Color Representation", "Blue/Green Color Cast"], # "Color representation is accurate"
 ]
 
@@ -6,7 +8,12 @@ def select_contrastive_pairs(indices=None):
     if indices is None:
         return contrastive_pairs
     else:
-        contrastive_pairs = []
+        selected_pairs = []
         for i in indices:
-            contrastive_pairs.append(contrastive_pairs[i])
-    return contrastive_pairs
+            if i < len(contrastive_pairs):
+                selected_pairs.append(contrastive_pairs[i])
+    return selected_pairs
+
+if __name__ == "__main__":
+    print(select_contrastive_pairs())
+    print(contrastive_pairs)
