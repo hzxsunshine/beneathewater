@@ -51,7 +51,27 @@ def prepare_the_dataframe(path_to_data):
     df["reference"] = [os.path.join(path_to_data, pair[1], file) for file in common_files]
     df.to_csv(os.path.join(path_to_data, "uieb.csv"), index=False)
 
+    assert df.shape[0] == 890, f"Dataframe shape does not match 890, {df.shape[0]} instead."
+
     return df
 
+def prepare_challenge_dataframe(path_to_data):
+    folder = "challenging-60"
+    files_in_dir = set(file for file in os.listdir(os.path.join(path_to_data, folder)) if file.endswith('.png'))
+    print("Number of files in the directory: ", len(files_in_dir))
+    print("Example of files: ", list(files_in_dir)[:5])
+
+    # Create a dataframe
+    df = pd.DataFrame(columns=["index", "challenge"])
+    df["index"] = list(range(len(files_in_dir)))
+    df["challenge"] = [os.path.join(path_to_data, folder, file) for file in files_in_dir]
+    df.to_csv(os.path.join(path_to_data, "challenge.csv"), index=False)
+
+    assert df.shape[0] == 60, f"Dataframe shape does not match 60, {df.shape[0]} instead."
+
+    return df
+
+
+
 if __name__ == "__main__":
-    prepare_the_dataframe("YOUR_PATH_TO_DATA")
+    pass
