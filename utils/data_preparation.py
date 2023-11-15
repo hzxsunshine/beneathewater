@@ -74,4 +74,5 @@ def prepare_challenge_dataframe(path_to_data):
 
 
 if __name__ == "__main__":
+    prepare_the_dataframe("/Users/zixuan/Downloads")
     pass
