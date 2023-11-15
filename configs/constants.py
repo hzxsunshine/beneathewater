@@ -1,5 +1,6 @@
 from typing import List, Final
 
+path_to_data: Final[str] = "./uieb_dataset"
 contrastive_pairs: Final[List[List[str]]] = [
     ["Accurate Color Representation", "Blue/Green Color Cast"], # "Color representation is accurate"
 ]
