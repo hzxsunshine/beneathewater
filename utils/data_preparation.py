@@ -1,6 +1,6 @@
 import gdown
 import pandas as pd
-from os import subprocess
+import subprocess
 
 # Load data
 def get_uieb_data():
