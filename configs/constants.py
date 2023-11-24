@@ -1,26 +1,16 @@
 from typing import List, Final
 
 path_to_data: Final[str] = "./uieb_dataset"
+
+# references: https://www.nature.com/articles/s41598-023-44179-3
 contrastive_pairs: Final[List[List[str]]] = [
     ["Accurate Color Representation", "Blue/Green Color Cast"],
-    ["Backlit Subjects", "Frontlit Subjects"], 
+    ["Vibrant and vivid", "Dull and washed-out"],
+    ["Richly detailed", " Blurry and indistinct"],
+    ["Perfectly lit", "Poorly exposed"],
+    ["Crystal-clear", "Obscured and murky"],
     ["Soft Focus", "Sharp Detail"],
-    ["Wide Angle", "Macro"],
-    ["Underexposed", "Overexposed"], 
-    ["Shallow Depth of Field", "Deep Depth of Field"],
-    ["High ISO Noise", "Low ISO Clarity"],
-    ["Filtered Light", "Direct Light"],
-    ["Dynamic Movement", "Static Calm"],
-    ["Clarity", "Murkiness"],
-    ["Textured Surfaces", "Smooth Surfaces"],
-    ["Top-Down View", "Eye-Level View"],
     ["Natural Ambient Light", "Artificial Light"], 
-    ["Unaltered Colors", "Color Enhanced"],
-    ["Organic Shapes", "Geometric Structures"],
-    ["Silhouetted", "Illuminated Subjects"],
-    ["Foreground Interest", "Background Dominance"],
-    
-    # "Color representation is accurate"
 ]
 
 def select_contrastive_pairs(indices=None):
