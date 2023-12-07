@@ -1,0 +1,7 @@
+Comparison Type,Attribute Type,Attribute,Mean Difference,Std Deviation
+Reference vs Raw,Colorfulness,Vibrant and vivid,0.043471209386761266,0.163211120936149
+Reference vs Raw,White balance,Accurate Color Representation,0.07270594821887069,0.1817640895965758
+Reference vs Raw,Exposure,Crystal-clear; Well-Lit Underwater; Balanced Exposure	,0.03714033548305097,0.14958415255732252
+Enhanced vs Base,CL,"Vibrant and vivid; Bright, Colorful Underwater Scene",0.19334284347978498,0.1662685562409933
+Enhanced vs Base,WB,Accurate Color Representation,0.1945734641271325,0.1884569178021449
+Enhanced vs Base,LIT,Crystal-clear and Unobstructed Scene; Balanced and Well-Lit view,0.0707924124795513,0.12820469439458176

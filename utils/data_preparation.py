@@ -5,13 +5,22 @@ import gdown
 import pandas as pd
 
 # Load data
-def get_uieb_data():
+def get_data(name="uieb"):
     base_url = "https://drive.google.com/uc?id="
-    id_ = "1Z5LKgmZmFRCQ6kZzHWTcV8gzeLcxHtXE"
+    if name == "uieb":
+        id_ = "1Z5LKgmZmFRCQ6kZzHWTcV8gzeLcxHtXE"
+        result_path = "./uieb_dataset.tar.gz"
+    elif name == "lsui":
+        id_ = "1kn-ym4BPAcZSmjNIomLx_2qYx6DNwNHz"
+        result_path = "./lsui_test.gz"
+    else:
+        raise ValueError("Invalid dataset name.")
+    
     url = base_url + id_
     gdown.download(url)
     print("Downloaded data from Google Drive, start unzipping...")
-    result = subprocess.run(["tar", "-xvf", "./uieb_dataset.tar.gz"], check=True)
+
+    result = subprocess.run(["tar", "-xvf", result_path], check=True)
     if result.returncode != 0:
         print("Failed to unzip data. Please try again.")
         return
@@ -45,10 +54,10 @@ def prepare_the_dataframe(path_to_data):
     print("Example of common files: ", list(common_files)[:5])
 
     # Create a dataframe
-    df = pd.DataFrame(columns=["index", "raw", "reference"])
-    df["index"] = list(range(len(common_files)))
-    df["raw"] = [os.path.join(path_to_data, pair[0], file) for file in common_files]
-    df["reference"] = [os.path.join(path_to_data, pair[1], file) for file in common_files]
+    df = pd.DataFrame(columns=["name", "raw_path", "reference_path"])
+    df['name'] = list(common_files)
+    df["raw_path"] = [os.path.join(path_to_data, pair[0], file) for file in common_files]
+    df["reference_path"] = [os.path.join(path_to_data, pair[1], file) for file in common_files]
     df.to_csv(os.path.join(path_to_data, "uieb.csv"), index=False)
 
     assert df.shape[0] == 890, f"Dataframe shape does not match 890, {df.shape[0]} instead."
@@ -74,5 +83,4 @@ def prepare_challenge_dataframe(path_to_data):
 
 
 if __name__ == "__main__":
-    prepare_the_dataframe("/Users/zixuan/Downloads")
     pass

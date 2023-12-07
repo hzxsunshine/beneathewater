@@ -1,28 +1,34 @@
 from typing import List, Final
 
 path_to_data: Final[str] = "./uieb_dataset"
+path_to_lsui: Final[str] = "./backup"
 
 # references: https://www.nature.com/articles/s41598-023-44179-3
 contrastive_pairs: Final[List[List[str]]] = [
+    # White Balance: DONE
     ["Accurate Color Representation", "Blue/Green Color Cast"],
+    # ["Accurate and Natural Color Representation", "Inaccurate, Artifact and uncomfortable Color Cast"], # WARM COLOR CAST result
+    # ["Harmonious, Suitable, and Aesthetically Pleasing Color Representation", 
+    #  "Distorted, Unfitting, and Visually Displeasing Color Cast"],
+
+    # vibrant and vivid: DONE
     ["Vibrant and vivid", "Dull and washed-out"],
+    ["Bright, Colorful Underwater Scene", "Dim, Desaturated Underwater Colors"],
+
+    # Exposure and lit: DONE
+    ["Crystal-clear and Unobstructed Scene", "Murky and Obscured View"],
+    ["Balanced and Well-Lit view", "Underlit scene and Backlit Objects"],
+
+    # Sharpness
     ["Richly detailed", " Blurry and indistinct"],
-    ["Perfectly lit", "Poorly exposed"],
-    ["Crystal-clear", "Obscured and murky"],
-    ["Soft Focus", "Sharp Detail"],
-    ["Natural Ambient Light", "Artificial Light"], 
+    ["Sharp Aquatic Details", "Blurred Movement"],
+
+    # Lighting
+    ["Natural Ambient Light", "Artificial Light"],
+
+    # playground:
+    # ["Studio Ghibli Style", "Realistic Underwater image"],
 ]
 
-def select_contrastive_pairs(indices=None):
-    if indices is None:
-        return contrastive_pairs
-    else:
-        selected_pairs = []
-        for i in indices:
-            if i < len(contrastive_pairs):
-                selected_pairs.append(contrastive_pairs[i])
-    return selected_pairs
-
 if __name__ == "__main__":
-    print(select_contrastive_pairs())
     print(contrastive_pairs)
